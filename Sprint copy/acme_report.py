@@ -1,11 +1,9 @@
 ### Part 4
-
 from random import randint, sample, uniform
 from acme import Product
 
 ADJECTIVES = ['Awesome', 'Shiny', 'Impressive', 'Portable', 'Improved']
 NOUNS = ['Anvil', 'Catapult', 'Disguise', 'Mousetrap', '???']
-
 
 def generate_products(n=30):
     products = []
@@ -16,9 +14,7 @@ def generate_products(n=30):
                         weight = random.randint(5,100),
                         flammability = random.uniform(0.0, 2.5),
                         identifier = random.randint(100000,999999))
-
     return products
-
 
 def inventory_report(products):
     print('ACME CORPORATION OFFICIAL INVENTORY REPORT')
@@ -34,7 +30,6 @@ def inventory_report(products):
 
     average_flammability = mean(products.flammability)
     print('Average flammability:', average_flammability)
-
 
 if __name__ == '__main__':
     inventory_report(generate_products())
