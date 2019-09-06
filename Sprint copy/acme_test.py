@@ -19,7 +19,6 @@ class AcmeProductTests(unittest.TestCase):
     def test_explode(self):
         product2 = ('Meliodas', 50, 100, 2.5, 987654)
         self.assertEqual = (product2.explode(), '...boom!')
-
         
 class AcmeReportTests(unittest.TestCase):
     """ Testing default number of products """
