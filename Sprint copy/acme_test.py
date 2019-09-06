@@ -1,9 +1,8 @@
-### Part 5​
+### Part 5
 import unittest
 from acme import Product
 from acme_report import generate_products, ADJECTIVES, NOUNS
-​
-​
+
 class AcmeProductTests(unittest.TestCase):
     """Making sure Acme products are the tops!"""
     def test_default_product_price(self):
@@ -19,9 +18,6 @@ class AcmeProductTests(unittest.TestCase):
         product2 = ('Meliodas', 50, 100, 2.5, 987654)
         self.assertEqual = (product2.explode(), '...boom!')
 
-
-
-
 class AcmeReportTests(unittest.TestCase):
     def test_default_num_products(self):
         self.assertEqual(len(products), 30)
@@ -30,9 +26,6 @@ class AcmeReportTests(unittest.TestCase):
         self.assertIn(f'{random.sample(adjectives)} {random.sample(nouns)}', 
                         'Portable Mousetrap')
 
-
-​
-​
 if __name__ == '__main__':
     unittest.main()
 
