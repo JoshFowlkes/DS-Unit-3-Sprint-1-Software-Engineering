@@ -3,45 +3,47 @@ import random
 
 """ Making The Product Class as outlined in Instructions """
 class Product:
-    def __init__(self, name, price=10, weight=20, flammability=.5, identifier=random.randint(100000,999999)):
+    def __init__(self, name, price=10, weight=20, flammability=.5, identifier):
         self.name = name
         self.price = price
         self.weight = weight
         self.flammability = flammability
-        self.identifier = identifier
+        self.identifier = random.randint(100000, 999999)
     
     """ Making the Stealability Function """
     def stealability(self):
-        self.steal_ratio = self.price / self.weight
-        if (self.steal_ratio < .05):
-            print('Not so stealable')
-        elif (self.steal_ratio > .5) & (self.steal_ratio < 1.0):
-            print('Kinda stealable')
+        steal_ratio = self.price / self.weight
+        if (steal_ratio < .05):
+            return 'Not so stealable'
+        elif (steal_ratio > .5) and (.steal_ratio < 1.0):
+            return 'Kinda stealable'
         else:
-            print('Very Stealable!') 
+            return 'Very Stealable!' 
     
     """ Making the Explode Function """
     def explode(self):
-        self.explode_ratio = self.flammability * 10
-        if (self.explode_ratio < 10):
-            print('...fizzle.')
-        elif (self.explode_ratio >= 10) & (self.explode_ratio < 50):
-            print('...boom!')
+        explode_ratio = self.flammability * 10
+        if (explode_ratio < 10):
+            return '...fizzle.'
+        elif (explode_ratio >= 10) and (explode_ratio < 50):
+            return '...boom!'
         else:
-            print('BABOOOOM BABAY!!!!')
+            return 'BABOOOOM BABAY!!!!'
 
 ### part 3
 """ Making the BoxingGlove Subclass of Product """
 class BoxingGlove(Product):
-    def __init__(self, name, price, weight = 10, flammability, identifier):
-        super().__init__(self, name, price, weight, flammability, identifier)
-        super(BoxingGlove, self).explode(print("... it's a glove."))
+    def __init__(self, name):
+        super.__init__(self, name, weight=10)
+    
+    def explode(self):
+        return "...it's a glove."
     
     """ Making the Punch Function  """
     def punch(self):
-        if (self.weight < 5):
-            print('That tickles.')
-        elif (self.weight >= 5) & (self.steal_ratio < 15):
-            print('Hey that hurt!')
+        if (weight < 5):
+            return 'That tickles.'
+        elif (weight >= 5) and (weight < 15):
+            return 'Hey that hurt!'
         else:
-            print('OUCH!')
+            return 'OUCH!'
