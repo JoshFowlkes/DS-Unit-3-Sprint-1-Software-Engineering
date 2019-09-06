@@ -19,31 +19,25 @@ class AcmeProductTests(unittest.TestCase):
         self.assertEqual(self.product.weight, 20)
 
     def test_default_product_flammability(self):
-        """Test default product flammability being 1/2."""
+        """Test default product flammability being .5"""
         self.assertEqual(self.product.flammability, 0.5)
-
-    def test_default_stealability(self):
-        """Test default stealability() being 'Kinda stealable.'"""
-        self.assertEqual(self.product.stealability(), 'Kinda stealable.')
-
+        
     def test_default_explode(self):
-        """Test default explode() being '...boom!'"""
-        self.assertEqual(self.product.explode(), '...boom!')
+        """Test default explode() is '...boom!'"""
+        self.assertEqual(self.product.explode(), '...boom!')    
 
-
-class AcmeReportTests(unittest.TestCase):
-    """Make sure you can impress Sr. Data Scientists"""
+  class AcmeReportTests(unittest.TestCase):
+    
 
     def setUp(self):
-        """Set's up the tests methods"""
         self.products = generate_products()
 
     def test_default_num_products(self):
-        """Test default number of products from generate_products() is 30"""
+        """Test default number of products is 30"""
         self.assertEqual(len(self.products), 30)
 
     def test_legal_names(self):
-        """Test product names are legal or not"""
+        """Test if product names are legal or not"""
         for product in self.products:
             name = product.name.split()
             self.assertIn(name[0], ADJECTIVES)
