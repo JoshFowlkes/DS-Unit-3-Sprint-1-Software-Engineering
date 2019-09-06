@@ -26,7 +26,7 @@ class AcmeProductTests(unittest.TestCase):
         """Test default explode() is '...boom!'"""
         self.assertEqual(self.product.explode(), '...boom!')    
 
-  class AcmeReportTests(unittest.TestCase):
+class AcmeReportTests(unittest.TestCase):
     
 
     def setUp(self):
