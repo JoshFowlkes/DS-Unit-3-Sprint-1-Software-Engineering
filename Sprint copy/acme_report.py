@@ -7,35 +7,50 @@ ADJECTIVES = ['Awesome', 'Shiny', 'Impressive', 'Portable', 'Improved']
 NOUNS = ['Anvil', 'Catapult', 'Disguise', 'Mousetrap', '???']
 
 """ Generate Products functions """
-def generate_products(n=30):
+def generate_products(num_products=30):
     products = []
 
     """ Making a for loop to make each individual product """
-    for _ in list(range(n)):
-        products = Product(name=(f'{random.sample(ADJECTIVES)} {random.sample(NOUNS)}')),
-                        price = random.randint(5,100),
-                        weight = random.randint(5,100),
-                        flammability = random.uniform(0.0, 2.5),
-                        identifier = random.randint(100000,999999))
+    for _ in range(num_products):
+        name = ADJECTIVES[randint(0,len(ADJECTIVES)-1)] + \
+            ' ' + NOUNS[randint(0, len(NOUNS)-1)]
+        price = randint(5, 100)
+        weight = randint(5, 100)
+        flammability = uniform(0.0, 2.5)
+
+        prod = Product(name=name, price=price, weight=weight,
+                       flammability=flammability)
+        products.append(prod)
     return products
 
 """ Making inventory report function """
 def inventory_report(products):
-    print('ACME CORPORATION OFFICIAL INVENTORY REPORT')
+    if not isinstance(products, list):
+        raise TypeError('`products` - parameter passed must be a list')
+
     
-    """ Unique product names is len of names """
-    unique_product_names = len(products.name)
-    print('Unique product names:', unique_product_names)
+    n_prod = len(products)
 
-    """ Using mean() to find average of each then printing each one out """
-    average_price = mean(products.price)
-    print('Average price:', average_price)
+    
+    if n_prod < 1 or (products is None):
+        return ValueError("`products` - parameter must be non-empty list.")
 
-    average_weight = mean(products.weight)
-    print('Average weight:', average_weight)
+    tot_price, tot_wt, tot_flm = 0, 0, 0
+    for product in products:
+        tot_price += product.price
+        tot_wt += product.weight
+        tot_flm += product.flammability
 
-    average_flammability = mean(products.flammability)
-    print('Average flammability:', average_flammability)
+    avg_price = tot_price / n_prod
+    avg_wt = tot_wt / n_prod
+    avg_flm = tot_flm / n_prod
+
+    print("ACME CORPORATION OFFICIAL INVENTORY REPORT")
+    print("Unique product names:", len(set(products)))
+    print("Average price:", avg_price)
+    print("Average weight:", avg_wt)
+    print("Average flammability:", avg_flm)
+
 
 if __name__ == '__main__':
     inventory_report(generate_products())
