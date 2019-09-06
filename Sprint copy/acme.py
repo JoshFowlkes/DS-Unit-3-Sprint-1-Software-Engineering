@@ -1,5 +1,4 @@
 ### Part 1 & 2
-
 import random
 
 class Product:
@@ -28,9 +27,7 @@ class Product:
         else:
             print('BABOOOOM BABAY!!!!')
 
-
 ### part 3
-
 class BoxingGlove(Product):
     def __init__(self, name, price, weight = 10, flammability, identifier):
         super().__init__(self, name, price, weight, flammability, identifier)
@@ -43,5 +40,3 @@ class BoxingGlove(Product):
             print('Hey that hurt!')
         else:
             print('OUCH!')
-
-
