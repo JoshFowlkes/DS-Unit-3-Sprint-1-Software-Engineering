@@ -32,8 +32,8 @@ class Product:
 ### part 3
 
 class BoxingGlove(Product):
-    def __init__(self, name, price, weight, flammability, identifier):
-        super().__init__(self, name, price, weight = 10, flammability, identifier)
+    def __init__(self, name, price, weight = 10, flammability, identifier):
+        super().__init__(self, name, price, weight, flammability, identifier)
         super(BoxingGlove, self).explode(print("... it's a glove."))
 
     def punch(self):
