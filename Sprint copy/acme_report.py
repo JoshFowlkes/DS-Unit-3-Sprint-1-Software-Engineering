@@ -27,13 +27,10 @@ def generate_products(num_products=30):
 def inventory_report(products):
     if not isinstance(products, list):
         raise TypeError('`products` - parameter passed must be a list')
-
-    
+        
     n_prod = len(products)
-
-    
     if n_prod < 1 or (products is None):
-        return ValueError("`products` - parameter must be non-empty list.")
+        return ValueError("`products` - parameter must be a non-empty list.")
 
     tot_price, tot_wt, tot_flm = 0, 0, 0
     for product in products:
