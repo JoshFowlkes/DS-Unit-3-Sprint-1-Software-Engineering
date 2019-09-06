@@ -1,6 +1,7 @@
 ### Part 1 & 2
 import random
 
+""" Making The Product Class as outlined in Instructions """
 class Product:
     def __init__(self, name, price=10, weight=20, flammability=.5, identifier=random.randint(100000,999999)):
         self.name = name
@@ -8,7 +9,8 @@ class Product:
         self.weight = weight
         self.flammability = flammability
         self.identifier = identifier
-
+    
+    """ Making the Stealability Function """
     def stealability(self):
         self.steal_ratio = self.price / self.weight
         if (self.steal_ratio < .05):
@@ -17,7 +19,8 @@ class Product:
             print('Kinda stealable')
         else:
             print('Very Stealable!') 
-
+    
+    """ Making the Explode Function """
     def explode(self):
         self.explode_ratio = self.flammability * 10
         if (self.explode_ratio < 10):
@@ -28,11 +31,13 @@ class Product:
             print('BABOOOOM BABAY!!!!')
 
 ### part 3
+""" Making the BoxingGlove Subclass of Product """
 class BoxingGlove(Product):
     def __init__(self, name, price, weight = 10, flammability, identifier):
         super().__init__(self, name, price, weight, flammability, identifier)
         super(BoxingGlove, self).explode(print("... it's a glove."))
-
+    
+    """ Making the Punch Function  """
     def punch(self):
         if (self.weight < 5):
             print('That tickles.')
