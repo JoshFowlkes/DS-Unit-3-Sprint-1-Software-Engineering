@@ -5,30 +5,50 @@ from acme_report import generate_products, ADJECTIVES, NOUNS
 
 class AcmeProductTests(unittest.TestCase):
     """Making sure Acme products are the tops!"""
+
+    def setUp(self):
+        """Set's up the tests methods"""
+        self.product = Product('Test Product')
+
     def test_default_product_price(self):
         """Test default product price being 10."""
-        prod = Product('Test Product')
-        self.assertEqual(prod.price, 10)
-        
-    """Testing the weight for an example product"""
-    def test_default_product_weight(self):
-        product1 = ('Escanor', 50, 7, 1.3, 123456)
-        self.assertEqual(product1.name, 'Escanor')
-        
-    """ Testing the explode function """
-    def test_explode(self):
-        product2 = ('Meliodas', 50, 100, 2.5, 987654)
-        self.assertEqual = (product2.explode(), '...boom!')
-        
-class AcmeReportTests(unittest.TestCase):
-    """ Testing default number of products """
-    def test_default_num_products(self):
-        self.assertEqual(len(products), 30)
+        self.assertEqual(self.product.price, 10)
 
-    """ Doing the Legal Names Test """
+    def test_default_product_weight(self):
+        """Test default product weight being 20."""
+        self.assertEqual(self.product.weight, 20)
+
+    def test_default_product_flammability(self):
+        """Test default product flammability being 1/2."""
+        self.assertEqual(self.product.flammability, 0.5)
+
+    def test_default_stealability(self):
+        """Test default stealability() being 'Kinda stealable.'"""
+        self.assertEqual(self.product.stealability(), 'Kinda stealable.')
+
+    def test_default_explode(self):
+        """Test default explode() being '...boom!'"""
+        self.assertEqual(self.product.explode(), '...boom!')
+
+
+class AcmeReportTests(unittest.TestCase):
+    """Make sure you can impress Sr. Data Scientists"""
+
+    def setUp(self):
+        """Set's up the tests methods"""
+        self.products = generate_products()
+
+    def test_default_num_products(self):
+        """Test default number of products from generate_products() is 30"""
+        self.assertEqual(len(self.products), 30)
+
     def test_legal_names(self):
-        self.assertIn(f'{random.sample(adjectives)} {random.sample(nouns)}', 
-                        'Portable Mousetrap')
+        """Test product names are legal or not"""
+        for product in self.products:
+            name = product.name.split()
+            self.assertIn(name[0], ADJECTIVES)
+            self.assertIn(name[1], NOUNS)
+
 
 if __name__ == '__main__':
     unittest.main()
